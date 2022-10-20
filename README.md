@@ -93,19 +93,24 @@ Monta la partition VAR en /mnt/var.
     mount -L VAR /mnt/var
     
 Crea carpeta "home"
+
     mkdir /mnt/home     
     
 Monta la partición HOME en /mnt/home.
+
     mount -L HOME /mnt/home 
+
 
 # 5. Activar SWAP
 Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
+
     swapon -L SWAP
+  
   
 # 6 Instalación del sistema básico - pacstrap
   Comando pacstrap instala paquetes. Empezamos con la instalación de algunos paquetes básicos.
   
-    # pacstrap /mnt base base-devel linux linux-firmware gptfdisk efibootmgr bash-completion vim lvm2 networkmanager
+    pacstrap /mnt base base-devel linux linux-firmware gptfdisk efibootmgr bash-completion vim lvm2 networkmanager
   
   Recomiendo instalar ya el networkmanager o dhcpcd. Nano se encuentra en el paquete “base”.
   No es necesario para tener un sistema Arch funcionando en Virtualbox pero se puede instalar
