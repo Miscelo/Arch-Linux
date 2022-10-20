@@ -6,9 +6,11 @@ Todos loc comandos de shell para la instalación despues de haber arrancado el s
 
 # 1. Primeros comandos
 Empezamos con los siguientes ordenes:
-    loadkeys es → teclado español
-    
-    ls /sys/firmware/efi/efivars → archivo existe, entonces EFI activado, sino es BIOS
+
+Cambiamos al teclado español con nuestra querrida 'ñ'.
+    loadkeys es
+Si el archivo existe, entonces está el EFI-boot activado.
+    ls /sys/firmware/efi/efivars
     
     # ip link → controlar conexión internet , ping, etc
     
