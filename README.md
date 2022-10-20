@@ -129,7 +129,9 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
   No es necesario para tener un sistema Arch funcionando en Virtualbox pero se puede instalar
   los paquetes de virtualbox que pronto hacen falta para p.E. soporte USB. Para nucleos linux
   se llama “virtualbox-host-modules-arch” y para otros nucleos incluido linux-lts es 
-  “virtualbox-host-dkms”. https://wiki.archlinux.org/title/VirtualBox_(Español)
+  “virtualbox-host-dkms”.
+  
+  https://wiki.archlinux.org/title/VirtualBox_(Español)
   
 
 ## 7 Primer configuración del sistema
@@ -185,9 +187,11 @@ Tenemos que configurar el teclado defenitivamente mas adelante.
   
   
 ### 7.8 Terminamos por fin
+Salir del sistema:
     
     exit
     
+Arrancar el sistema de nuevo para comprobar la instalación:
     
     reboot
  
