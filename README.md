@@ -60,23 +60,23 @@ Finalmente terminamos el particionado – comando ‘**w**’.
 
 
 ## 3. Formatesar particiones
-1. Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
+Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
 
     mkfs.fat -F 32 -n BOOT /dev/sda1
     
-2. SWAP
+SWAP
     
     mkswap -L SWAP /dev/sda2
     
-3. ROOT
+ROOT
 
     mkfs.ext4 -L ROOT /dev/sda3
 
-4. VAR
+VAR
 
     mkfs.ext4 -L VAR /dev/sda4
 
-5. HOME
+HOME
     
     mkfs.ext4 -L HOME /dev/sda5
 
