@@ -25,17 +25,15 @@ Hora del sistema
    
 Comprobar el nombre del disco duro, normalmente es /dev/sda  
    
-        fdisk -l 
+    fdisk -l 
     
 Arrancamos el Manager de particiones gdisk
         
-        gdisk /dev/sda → arranca Manager de particiones
+    gdisk /dev/sda → arranca Manager de particiones
 
 
 # 2. GDISK - particionado del disco duro.
-    # gdisk /dev/sda #
-  
-    n → nueva partición
+n → nueva partición
     
     #Crear partición con gdisk
     Command (? for help): n
@@ -45,38 +43,64 @@ Arrancamos el Manager de particiones gdisk
     Current type is 'Linux filesystem'
     Hex code or GUID (L to show codes, Enter = 8300):
 
-  - Tabla, ejemplo con un disco duro mas de 20GB. 
-  partición 1: +1024M (para EFI, 512 es suficiente, dicen) HEX-code: ef00
-  partición 2: +2048M (SWAP, tamaño de memoria RAM, con 2G va bien) HEX-code: 8200
-  partición 3: +10G   (root partición, minimo 4G), HEX-code: 8303
-  partición 4: +4G    (var partición, no es necesario), HEX-code: 8310
-  partición 5: Resto del espacio libre (home partición) , HEX-code: 8302
+Tabla, ejemplo con un disco duro mas de 20GB. 
+partición 1: +1024M (para EFI, 512 es suficiente, dicen) HEX-code: ef00
+partición 2: +2048M (SWAP, tamaño de memoria RAM, con 2G va bien) HEX-code: 8200
+partición 3: +10G   (root partición, minimo 4G), HEX-code: 8303
+partición 4: +4G    (var partición, no es necesario), HEX-code: 8310
+partición 5: Resto del espacio libre (home partición) , HEX-code: 8302
   
-  Info: Instalación mínima con EFI son 3 partitiones. EFI, SWAP, ROOT - ‘/’.
+Info: Instalación mínima con EFI son 3 partitiones. EFI, SWAP, ROOT - ‘/’.
 
-  Finalmente terminamos el particionado – comando ‘w’.
+Finalmente terminamos el particionado – comando ‘w’.
 
 
 # 3. Formatesar particiones
-    # mkfs.fat -F 32 -n BOOT /dev/sda1 (‘n’ es Label en caso de fat, normalmente es ‘L’)
-    # mkswap -L SWAP /dev/sda2
-    # mkfs.ext4 -L ROOT /dev/sda3
-    # mkfs.ext4 -L VAR /dev/sda4
-    # mkfs.ext4 -L HOME /dev/sda5
+Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
+
+    mkfs.fat -F 32 -n BOOT /dev/sda1
+    
+    mkswap -L SWAP /dev/sda2
+    
+    mkfs.ext4 -L ROOT /dev/sda3
+    
+    mkfs.ext4 -L VAR /dev/sda4
+    
+    mkfs.ext4 -L HOME /dev/sda5
 
 
 # 4. Crear puntos de montajes y montar particiones
-    Trabajamos con Lables ‘L’:
-    # mount -L ROOT /mnt        → Root partition directamente montado en /mnt.
-    # mkdir /mnt/boot           → crea carpeta boot
-    # mount -L BOOT /mnt/boot   → montar partición con efi - “BOOT” en boot.
-    # mkdir /mnt/var            → crea carpeta “var”
-    # mount -L VAR /mnt/var     → monta la partition VAR en /mnt/var.
-    # mkdir /mnt/home           → crea carpeta “home”.
-    # mount -L HOME /mnt/home   → monta la partición HOME en /mnt/home.
+Trabajamos con Lables ‘L’:
+
+Root partition directamente montado en /mnt.
+
+    mount -L ROOT /mnt
+    
+Crea carpeta boot
+
+    mkdir /mnt/boot        
+   
+Montar partición con efi - “BOOT” en boot.
+    
+    mount -L BOOT /mnt/boot
+    
+Crea carpeta “var”
+    
+    mkdir /mnt/var
+    
+Monta la partition VAR en /mnt/var.    
+
+    mount -L VAR /mnt/var
+    
+Crea carpeta "home"
+    mkdir /mnt/home     
+    
+Monta la partición HOME en /mnt/home.
+    mount -L HOME /mnt/home 
 
 # 5. Activar SWAP
-    # swapon -L SWAP    (o swapon /dev/sda2)  → activa el espacio swap
+Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
+    swapon -L SWAP
   
 # 6 Instalación del sistema básico - pacstrap
   Comando pacstrap instala paquetes. Empezamos con la instalación de algunos paquetes básicos.
