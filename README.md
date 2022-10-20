@@ -7,15 +7,11 @@ Todos loc comandos de shell para la instalación despues de haber arrancado el s
 # 1. Primeros comandos
 Empezamos con los siguientes ordenes:
 
-    Cambiamos al teclado español con nuestra querrida 'ñ'.
-    
+Cambiamos al teclado español con nuestra querrida 'ñ'.
     # loadkeys es
-    
 Si el archivo existe, entonces está el EFI-boot activado.
-    
     # ls /sys/firmware/efi/efivars
-    
-    text
+Controlamos la conexión internet. ping, etc,...
     # ip link → controlar conexión internet , ping, etc
     
     # timedatectl set-ntp true → hora del sistema
