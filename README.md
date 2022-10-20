@@ -37,15 +37,21 @@ Arrancamos el Manager de particiones gdisk
 ## 2. GDISK - particionado del disco duro.
 n → nueva partición
 
-<sub>    
+- ![#c5f015](Command (? for help): n)`#c5f015`
+- ![#c5f015](Partition number (1-128, default 1):)`#c5f015`
 Crear partición con gdisk
 Command (? for help): n
+    
 Partition number (1-128, default 1):
+    
 First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
+    
 Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
+    
 Current type is 'Linux filesystem'
+    
 Hex code or GUID (L to show codes, Enter = 8300):
-</sub>
+`#c5f015`
 
 Tabla, ejemplo con un disco duro mas de 20GB. 
 1. partición: +1024M (para EFI, 512 es suficiente, dicen) HEX-code: ef00
