@@ -149,7 +149,7 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
 
 ### 7.5 Modificar archivo de configuración ‘loader.conf’
     vim /boot/loader/loader.conf
-  borrar el contenido y reemplazarlo con:
+Borrar el contenido y reemplazarlo con:
   
     # para copiar y pegar en el archivo /boot/loader/loader.conf
     default arch
@@ -159,8 +159,9 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
    editor 0 → Es importante para no pasar la contraseña de root al arrancar el sistema.
    
 ### 7.6 Crear archivo de configuración ‘arch.conf’
-   vim /boot/loader/entries/arch.conf
-  
+    vim /boot/loader/entries/arch.conf
+ Texto para copiar: 
+ 
     # para copiar y pegar al archivo /boot/loader/entries/arch.conf
     title
     Arch Linux
