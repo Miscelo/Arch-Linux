@@ -39,6 +39,17 @@ n → nueva partición
 
 - ![#c5f015](Command (? for help): n)`#c5f015`
 - ![#c5f015](Partition number (1-128, default 1):)`#c5f015`
+
+<span style="color: green"> Some green text </span>
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+
 Crear partición con gdisk
 Command (? for help): n
     
