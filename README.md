@@ -45,6 +45,7 @@ n → nueva partición
 @ text in purple (and bold)@
 @ text in purple (and bold)
 ```
+`#3CB043`Green text 
 
 Crear partición con gdisk
 Command (? for help): n
