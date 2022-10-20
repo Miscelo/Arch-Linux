@@ -1,8 +1,9 @@
 # Instalación del sistema Arch Linux con UEFI
-Guia en castellano para instalar Arch Linux en un etorno Virtual "Virtualbox" con UEFI- boot.
+Guia en castellano para instalar Arch Linux en un etorno Virtual "Virtualbox" con UEFI-boot.
 
-Se recomienda leer el archivo arch-linux-instalacion-UEFI.pdf.
-Todos loc comandos de shell para la instalación despues de haber arrancado el sistema en un etorno virtual.
+Se recomienda leer el archivo Arch-linux-instalacion-UEFI.pdf para la configuración de Virtualbox.
+
+Aquí encuentras todos los comandos de shell para la instalación despues de haber arrancado el sistema en un etorno virtual para tener un Arch Linux funcionando en un etorno virtual.
 
 ## 1. Primeros comandos
 Empezamos con los siguientes ordenes:
@@ -35,25 +36,27 @@ Arrancamos el Manager de particiones gdisk
 
 ## 2. GDISK - particionado del disco duro.
 n → nueva partición
-    
-> Crear partición con gdisk
-> Command (? for help): n
-  Partition number (1-128, default 1):
-  First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
-    Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
-    Current type is 'Linux filesystem'
-    Hex code or GUID (L to show codes, Enter = 8300):
+
+<sub>    
+Crear partición con gdisk
+Command (? for help): n
+Partition number (1-128, default 1):
+First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300):
+</sub>
 
 Tabla, ejemplo con un disco duro mas de 20GB. 
-partición 1: +1024M (para EFI, 512 es suficiente, dicen) HEX-code: ef00
-partición 2: +2048M (SWAP, tamaño de memoria RAM, con 2G va bien) HEX-code: 8200
-partición 3: +10G   (root partición, minimo 4G), HEX-code: 8303
-partición 4: +4G    (var partición, no es necesario), HEX-code: 8310
-partición 5: Resto del espacio libre (home partición) , HEX-code: 8302
+1. partición: +1024M (para EFI, 512 es suficiente, dicen) HEX-code: ef00
+2. partición: +2048M (SWAP, tamaño de memoria RAM, con 2G va bien) HEX-code: 8200
+3. partición: +10G   (root partición, minimo 4G), HEX-code: 8303
+4. partición: +4G    (var partición, no es necesario), HEX-code: 8310
+5. partición: Resto del espacio libre (home partición) , HEX-code: 8302
   
-Info: Instalación mínima con EFI son 3 partitiones. EFI, SWAP, ROOT - ‘/’.
+**Info:** Instalación mínima con EFI son 3 partitiones. EFI, SWAP, ROOT - ‘/’.
 
-Finalmente terminamos el particionado – comando ‘w’.
+Finalmente terminamos el particionado – comando ‘**w**’.
 
 
 ## 3. Formatesar particiones
