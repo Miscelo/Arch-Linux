@@ -4,7 +4,7 @@ Guia en castellano para instalar Arch Linux en un etorno Virtual "Virtualbox" co
 Se recomienda leer el archivo arch-linux-instalacion-UEFI.pdf.
 Todos loc comandos de shell para la instalación despues de haber arrancado el sistema en un etorno virtual.
 
-# 1. Primeros comandos
+## 1. Primeros comandos
 Empezamos con los siguientes ordenes:
 
 Cambiamos al teclado español con nuestra querrida 'ñ'.
@@ -32,7 +32,7 @@ Arrancamos el Manager de particiones gdisk
     gdisk /dev/sda → arranca Manager de particiones
 
 
-# 2. GDISK - particionado del disco duro.
+## 2. GDISK - particionado del disco duro.
 n → nueva partición
     
     #Crear partición con gdisk
@@ -55,7 +55,7 @@ Info: Instalación mínima con EFI son 3 partitiones. EFI, SWAP, ROOT - ‘/’.
 Finalmente terminamos el particionado – comando ‘w’.
 
 
-# 3. Formatesar particiones
+## 3. Formatesar particiones
 Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
 
     mkfs.fat -F 32 -n BOOT /dev/sda1
@@ -69,7 +69,7 @@ Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
     mkfs.ext4 -L HOME /dev/sda5
 
 
-# 4. Crear puntos de montajes y montar particiones
+## 4. Crear puntos de montajes y montar particiones
 Trabajamos con Lables ‘L’:
 
 Root partition directamente montado en /mnt.
@@ -101,13 +101,13 @@ Monta la partición HOME en /mnt/home.
     mount -L HOME /mnt/home 
 
 
-# 5. Activar SWAP
+## 5. Activar SWAP
 Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
 
     swapon -L SWAP
   
   
-# 6 Instalación del sistema básico - pacstrap
+## 6 Instalación del sistema básico - pacstrap
   Comando pacstrap instala paquetes. Empezamos con la instalación de algunos paquetes básicos.
   
     pacstrap /mnt base base-devel linux linux-firmware gptfdisk efibootmgr bash-completion vim lvm2 networkmanager
@@ -119,22 +119,22 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
   “virtualbox-host-dkms”. https://wiki.archlinux.org/title/VirtualBox_(Español)
   
 
-# 7 Primer configuración del sistema
+## 7 Primer configuración del sistema
 
-  # 7.1 Crear archivo fstab
+  ### 7.1 Crear archivo fstab
     # genfstab -Lp /mnt >> /mnt/etc/fstab
  
-  # 7.2 Crear archivo hostname
+  ### 7.2 Crear archivo hostname
     # echo myhost > /mnt/etc/hostname       → cambia “myhost” con tu nombre preferido.
     
-  # 7.3 Cambiar a nuestro sistema nuevo con arch-chroot
+  ### 7.3 Cambiar a nuestro sistema nuevo con arch-chroot
     # arch-chroot /mnt     → "Estamos ahora en nuestra consola del nuevo sistema".
 
-  # 7.4 Crear arranque efi
+  ### 7.4 Crear arranque efi
   No hace falta instalar un bootloader. Tenemos que decir al systemd que arranca en modo efi.
   Comando: bootctl install         → Esto es todo.Sorprendentemento fácil.
 
-  # 7.5 Modificar archivo de configuración ‘loader.conf’
+  ### 7.5 Modificar archivo de configuración ‘loader.conf’
   vim /boot/loader/loader.conf
   borrar el contenido y reemplazarlo con:
   
@@ -145,7 +145,7 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
     
    editor 0 → Es importante para no pasar la contraseña de root al arrancar el sistema.
    
-  # 7.6 Crear archivo de configuración ‘arch.conf’
+  ### 7.6 Crear archivo de configuración ‘arch.conf’
    vim /boot/loader/entries/arch.conf
   
     # para copiar y pegar al archivo /boot/loader/entries/arch.conf
@@ -157,16 +157,18 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
     /initramfs.linux.imgç
     options root=LABEL=ROOT rw
     
-  # 7.7 Crear contraseña root
+  ### 7.7 Crear contraseña root
   Poner root password: passwd → No necesario pero mejor haberlo hecho ya.
   Si no se pone, se queda vacio y el usuario puede conectarse sin contraseña.
   Ojo: no eliges nada raro de contraseña al principio.
   Tenemos que configurar el teclado defenitivamente mas adelante.
   
   
-  # 7.8 Terminamos por fin
-    # exit
-    # reboot
+  ### 7.8 Terminamos por fin
+    
+    exit
+    
+    reboot
  
   Ahora nos encontramos en nuestra nueva instancia de Arch Linux.
   No olvides de nuevo el teclado: loadkeys es y empezamos a configurar. Teclado, red, desktop, server, .....
