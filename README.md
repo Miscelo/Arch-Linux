@@ -32,13 +32,14 @@ Arrancamos el Manager de particiones gdisk
     gdisk /dev/sda → arranca Manager de particiones
 
 
+
 ## 2. GDISK - particionado del disco duro.
 n → nueva partición
     
-    #Crear partición con gdisk
-    Command (? for help): n
-    Partition number (1-128, default 1):
-    First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
+> Crear partición con gdisk
+> Command (? for help): n
+  Partition number (1-128, default 1):
+  First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
     Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
     Current type is 'Linux filesystem'
     Hex code or GUID (L to show codes, Enter = 8300):
