@@ -7,14 +7,19 @@ Todos loc comandos de shell para la instalación despues de haber arrancado el s
 # 1. Primeros comandos
 Empezamos con los siguientes ordenes:
     # loadkeys es → teclado español
+    
     # ls /sys/firmware/efi/efivars → archivo existe, entonces EFI activado, sino es BIOS
+    
     # ip link → controlar conexión internet , ping, etc
+    
     # timedatectl set-ntp true → hora del sistema
+    
     # fdisk -l → comprobar nombre del disco duro, normalmente /dev/sda
+    
     # gdisk /dev/sda → arranca Manager de particiones
 
 # 2. GDISK - particionado del disco duro.
-    # gdisk /dev/sda
+    # gdisk /dev/sda #
   
     n → nueva partición
     
@@ -47,7 +52,7 @@ Empezamos con los siguientes ordenes:
 
 
 # 4. Crear puntos de montajes y montar particiones
-Trabajamos con Lables ‘L’:
+    Trabajamos con Lables ‘L’:
     # mount -L ROOT /mnt        → Root partition directamente montado en /mnt.
     # mkdir /mnt/boot           → crea carpeta boot
     # mount -L BOOT /mnt/boot   → montar partición con efi - “BOOT” en boot.
