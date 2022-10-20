@@ -138,13 +138,15 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
     genfstab -Lp /mnt >> /mnt/etc/fstab
  
 ### 7.2 Crear archivo hostname
-    echo myhost > /mnt/etc/hostname       → cambia “myhost” con tu nombre preferido.
+Cambia “myhost” con tu nombre preferido.
+    echo myhost > /mnt/etc/hostname 
     
 ### 7.3 Cambiar a nuestro sistema nuevo con arch-chroot
-    arch-chroot /mnt     → "Estamos ahora en nuestra consola del nuevo sistema".
+Cambiamos a nuestra consola del nuevo sistema:
+    arch-chroot /mnt     
 
 ### 7.4 Crear arranque efi
-  No hace falta instalar un bootloader. Tenemos que decir al systemd que arranca en modo efi.
+No hace falta instalar un bootloader. Tenemos que decir al systemd que arranca en modo efi.
     bootctl install
 
 ### 7.5 Modificar archivo de configuración ‘loader.conf’
@@ -172,21 +174,29 @@ Borrar el contenido y reemplazarlo con:
     options root=LABEL=ROOT rw
     
 ### 7.7 Crear contraseña root
-  Poner root password: passwd → No necesario pero mejor haberlo hecho ya.
-  Si no se pone, se queda vacio y el usuario puede conectarse sin contraseña.
-  Ojo: no eliges nada raro de contraseña al principio.
-  Tenemos que configurar el teclado defenitivamente mas adelante.
+Poner root password: 
+
+    passwd
+    
+No necesario pero mejor haberlo hecho ya.
+Si no se pone, se queda vacio y el usuario puede conectarse sin contraseña.
+**Ojo:** no eliges nada raro de contraseña al principio.
+Tenemos que configurar el teclado defenitivamente mas adelante.
   
   
 ### 7.8 Terminamos por fin
     
     exit
     
+    
     reboot
  
 Ahora nos encontramos en nuestra nueva instancia de Arch Linux.
+
 No olvides de nuevo el teclado: loadkeys es y empezamos a configurar. Teclado, red, desktop, server, .....
+
 Mas aquí:
+
 https://wiki.archlinux.org/title/Arch_Linux_(Español)
   
   
