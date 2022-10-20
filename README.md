@@ -38,14 +38,12 @@ Arrancamos el Manager de particiones gdisk
 n → nueva partición
 ```diff
 
-+ text in green
-!! text in orange !!
-# text in gray
-@@ text in purple (and bold)@@
-@ text in purple (and bold)@
-@ text in purple (and bold)
++ Command (? for help): n
++ Partition number (1-128, default 1):
++ First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
+
 ```
-`#3CB043`Green text 
+
 
 Crear partición con gdisk
 Command (? for help): n
