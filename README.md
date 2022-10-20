@@ -9,21 +9,28 @@ Empezamos con los siguientes ordenes:
 
 Cambiamos al teclado español con nuestra querrida 'ñ'.
 
-    # loadkeys es
+    loadkeys es
     
 Si el archivo existe, entonces está el EFI-boot activado.
 
-    # ls /sys/firmware/efi/efivars
+    ls /sys/firmware/efi/efivars
     
 Controlamos la conexión internet. ping, etc,...
 
-    # ip link → controlar conexión internet , ping, etc
+    ip link
     
-    # timedatectl set-ntp true → hora del sistema
+Hora del sistema
     
-    # fdisk -l → comprobar nombre del disco duro, normalmente /dev/sda
+    timedatectl set-ntp true
+   
+Comprobar el nombre del disco duro, normalmente es /dev/sda  
+   
+        fdisk -l 
     
-    # gdisk /dev/sda → arranca Manager de particiones
+Arrancamos el Manager de particiones gdisk
+        
+        gdisk /dev/sda → arranca Manager de particiones
+
 
 # 2. GDISK - particionado del disco duro.
     # gdisk /dev/sda #
