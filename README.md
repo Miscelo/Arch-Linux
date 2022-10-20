@@ -60,7 +60,7 @@ Finalmente terminamos el particionado – comando ‘**w**’.
 
 
 ## 3. Formatesar particiones
-Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
+BOOT paritición. (‘n’ es Label en caso de fat, normalmente es ‘L’)
 
     mkfs.fat -F 32 -n BOOT /dev/sda1
     
@@ -134,21 +134,21 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
 
 ## 7 Primer configuración del sistema
 
-  ### 7.1 Crear archivo fstab
-    # genfstab -Lp /mnt >> /mnt/etc/fstab
+### 7.1 Crear archivo fstab
+    genfstab -Lp /mnt >> /mnt/etc/fstab
  
-  ### 7.2 Crear archivo hostname
-    # echo myhost > /mnt/etc/hostname       → cambia “myhost” con tu nombre preferido.
+### 7.2 Crear archivo hostname
+    echo myhost > /mnt/etc/hostname       → cambia “myhost” con tu nombre preferido.
     
-  ### 7.3 Cambiar a nuestro sistema nuevo con arch-chroot
-    # arch-chroot /mnt     → "Estamos ahora en nuestra consola del nuevo sistema".
+### 7.3 Cambiar a nuestro sistema nuevo con arch-chroot
+    arch-chroot /mnt     → "Estamos ahora en nuestra consola del nuevo sistema".
 
-  ### 7.4 Crear arranque efi
+### 7.4 Crear arranque efi
   No hace falta instalar un bootloader. Tenemos que decir al systemd que arranca en modo efi.
-  Comando: bootctl install         → Esto es todo.Sorprendentemento fácil.
+    bootctl install
 
-  ### 7.5 Modificar archivo de configuración ‘loader.conf’
-  vim /boot/loader/loader.conf
+### 7.5 Modificar archivo de configuración ‘loader.conf’
+    vim /boot/loader/loader.conf
   borrar el contenido y reemplazarlo con:
   
     # para copiar y pegar en el archivo /boot/loader/loader.conf
@@ -158,7 +158,7 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
     
    editor 0 → Es importante para no pasar la contraseña de root al arrancar el sistema.
    
-  ### 7.6 Crear archivo de configuración ‘arch.conf’
+### 7.6 Crear archivo de configuración ‘arch.conf’
    vim /boot/loader/entries/arch.conf
   
     # para copiar y pegar al archivo /boot/loader/entries/arch.conf
@@ -170,23 +170,23 @@ Activamos el espacio swap. El ejemplo con Label, opcional "swapon /dev/sda".
     /initramfs.linux.imgç
     options root=LABEL=ROOT rw
     
-  ### 7.7 Crear contraseña root
+### 7.7 Crear contraseña root
   Poner root password: passwd → No necesario pero mejor haberlo hecho ya.
   Si no se pone, se queda vacio y el usuario puede conectarse sin contraseña.
   Ojo: no eliges nada raro de contraseña al principio.
   Tenemos que configurar el teclado defenitivamente mas adelante.
   
   
-  ### 7.8 Terminamos por fin
+### 7.8 Terminamos por fin
     
     exit
     
     reboot
  
-  Ahora nos encontramos en nuestra nueva instancia de Arch Linux.
-  No olvides de nuevo el teclado: loadkeys es y empezamos a configurar. Teclado, red, desktop, server, .....
-  Mas aquí:
-  https://wiki.archlinux.org/title/Arch_Linux_(Español)
+Ahora nos encontramos en nuestra nueva instancia de Arch Linux.
+No olvides de nuevo el teclado: loadkeys es y empezamos a configurar. Teclado, red, desktop, server, .....
+Mas aquí:
+https://wiki.archlinux.org/title/Arch_Linux_(Español)
   
   
  
