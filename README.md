@@ -10,7 +10,7 @@ Empezamos con los siguientes ordenes:
 
 Cambiamos al teclado español con nuestra querrida 'ñ'.
 
-    **loadkeys es**
+    loadkeys es
     
 Si el archivo existe, entonces está el EFI-boot activado.
 
@@ -35,29 +35,17 @@ Arrancamos el Manager de particiones gdisk
 
 
 ## 2. GDISK - particionado del disco duro.
+Crear partición con gdisk
 n → nueva partición
 ```diff
-
 + Command (? for help): n
 + Partition number (1-128, default 1):
 + First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
++ Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
++ Current type is 'Linux filesystem'
++ Hex code or GUID (L to show codes, Enter = 8300):
 
 ```
-
-
-Crear partición con gdisk
-Command (? for help): n
-    
-Partition number (1-128, default 1):
-    
-First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
-    
-Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
-    
-Current type is 'Linux filesystem'
-    
-Hex code or GUID (L to show codes, Enter = 8300):
-`#c5f015`
 
 Tabla, ejemplo con un disco duro mas de 20GB. 
 1. partición: +1024M (para EFI, 512 es suficiente, dicen) HEX-code: ef00
@@ -72,17 +60,26 @@ Finalmente terminamos el particionado – comando ‘**w**’.
 
 
 ## 3. Formatesar particiones
-Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
+1. Boot parititon. (‘n’ es Label en caso de fat, normalmente es ‘L’)
 
     mkfs.fat -F 32 -n BOOT /dev/sda1
     
+2. SWAP
+    
     mkswap -L SWAP /dev/sda2
     
+3. ROOT
+
     mkfs.ext4 -L ROOT /dev/sda3
-    
+
+4. VAR
+
     mkfs.ext4 -L VAR /dev/sda4
+
+5. HOME
     
     mkfs.ext4 -L HOME /dev/sda5
+
 
 
 ## 4. Crear puntos de montajes y montar particiones
