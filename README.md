@@ -10,7 +10,7 @@ Empezamos con los siguientes ordenes:
 
 Cambiamos al teclado español con nuestra querrida 'ñ'.
 
-    loadkeys es
+    **loadkeys es**
     
 Si el archivo existe, entonces está el EFI-boot activado.
 
